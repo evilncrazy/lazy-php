@@ -8,7 +8,9 @@ Examples
 
 ```php
 // $fibs is a lazy list of the first 20 fibonacci numbers
-$fibs = lazy_list(function($m = 0, $n = 1) { return array($n, array($m + $n)); }, 20);
+$fibs = lazy_list(function($m = 0, $n = 1) { // initially, fib(0) = m = 0, fib(1) = n = 1
+   return array($m, array($n, $m + $n)); // array($n, $m + $n) lazily sets the parameters for next fib number
+}, 20); // go up to only 20 elements
 
 // print them out using a foreach loop
 foreach($fibs as $i => $fib) {
